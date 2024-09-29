@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="conatainer" style = "text-align: center">
+        {% include 'navbar.html'%}
+        <h1>Welcome to our website</h1>
+        <form action="/home/" method="POST">
+            {% csrf_token %}
+            {% comment %} <input type="text" name = "check"> {% endcomment %}
+            <input type="checkbox" name = "check">
+            <button>Send</button>
+        </form>
+        {% comment %} <input type="text">
+        <button>send</button> {% endcomment %}
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Enim voluptatibus odit provident officia assumenda aperiam 
+        quam odio nemo cum error illo incidunt natus iusto illum,
+         numquam debitis recusandae aut aspernatur facere rerum eaque. 
+         Error recusandae aut magnam voluptatum, ipsam incidunt dolorem 
+         sed quidem, ratione dolorum, fugit ex iusto neque est!
+    </p>
+    <button>Contact Us</button>
+    </div>
+    <div>
+        {% comment %} dynamic data accessing {% endcomment %}
+        {% if isActive %}
+        <h1>Today date and time is {{date}}</h1>
+    <h1>Developer name is {{name}}</h1>
+    <hr>
+    <h1>Student data</h1>
+    <h2>Student name: {{student_data.student_name}}</h2>
+    <h2>Student college: {{student_data.student_college}}</h2>
+    <h2>Student city: {{student_data.student_city}}</h2>
+        {% endif %}
+    </div>
+    <div>
+        {% if isActive %}
+        <h1>favorate programs</h1>
+        {% for program in list_of_program%}
+        <h3>{{program}}</h3>
+        {% endfor%}
+        {% endif%}
+    </div>
+</body>
+</html>
